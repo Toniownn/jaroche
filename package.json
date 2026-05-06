@@ -1,0 +1,25 @@
+{
+  "name": "jaroche",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Jaroche full-stack ecommerce monorepo (Next.js + Express + Prisma)",
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,green \"npm -w server run dev\" \"npm -w client run dev\"",
+    "build": "npm -w shared run build && npm -w server run build && npm -w client run build",
+    "typecheck": "npm -w shared run typecheck && npm -w server run typecheck && npm -w client run typecheck",
+    "db:migrate": "npm -w server run db:migrate",
+    "db:seed": "npm -w server run db:seed",
+    "db:studio": "npm -w server exec -- prisma studio"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
