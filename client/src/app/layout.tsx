@@ -20,8 +20,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: 'Jaroché — heirloom crochet, made slowly',
-  description: 'Made slowly, one stitch at a time. Crochet pieces from Jaroché.',
+  title: 'Jaroché — Arts & Crafts Store',
+  description: 'Handmade crochet from Yati, Liloan, Cebu. Made one stitch at a time by Kathlyn Jarocan.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

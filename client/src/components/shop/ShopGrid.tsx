@@ -27,7 +27,7 @@ const SWATCHES: Array<{ tone: string; hex: string; title: string }> = [
 ];
 
 const MATERIALS = ['Organic cotton', 'Linen', 'Raffia', 'Merino wool'] as const;
-const MAKERS = ['Maria', 'Joana', 'Both makers'] as const;
+const MAKERS = ['Kathlyn Jarocan'] as const;
 
 const PRICE_MIN_DEFAULT = 0;
 const PRICE_MAX_DEFAULT = 12000;

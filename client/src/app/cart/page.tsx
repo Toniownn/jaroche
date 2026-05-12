@@ -105,7 +105,7 @@ export default function CartPage() {
             : `${totalQty} ${totalQty === 1 ? 'piece' : 'pieces'} in your basket`
         }
         title={<>Your <em>basket.</em></>}
-        sub="Each piece is made to order in our Lisbon studio. Allow 7–14 days from checkout to dispatch."
+        sub="Each piece is made to order in our Cebu studio. Allow 7–14 days from checkout to dispatch."
       />
 
       <section className="cart-grid">
@@ -135,7 +135,16 @@ export default function CartPage() {
               return (
                 <div key={it.productId} className="cart-row">
                   <div className="cart-img">
-                    <Placeholder label={label} ratio="1 / 1" tone={tone} />
+                    {it.product.imageUrl ? (
+                      <img
+                        src={it.product.imageUrl}
+                        alt={it.product.name}
+                        loading="lazy"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', aspectRatio: '1 / 1' }}
+                      />
+                    ) : (
+                      <Placeholder label={label} ratio="1 / 1" tone={tone} />
+                    )}
                   </div>
                   <div className="cart-info">
                     <h3>{it.product.name}</h3>

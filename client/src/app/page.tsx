@@ -44,6 +44,7 @@ export default async function LandingPage() {
         count: inCat.length,
         tone: (sample.tone as Tone | undefined) ?? 'beige',
         label: sample.label ?? cat.toLowerCase(),
+        imageUrl: sample.imageUrl,
       },
     ];
   }).slice(0, 6);
@@ -67,8 +68,8 @@ export default async function LandingPage() {
             </h1>
 
             <p className="hero-tag">
-              Heirloom-quality crochet — bags, accessories and home pieces, made one stitch at a time
-              in a small Lisbon studio.
+              Arts &amp; crafts store — handmade crochet bouquets, amigurumi, tops, bags and home pieces,
+              made one stitch at a time in our small Cebu studio.
             </p>
 
             <div className="hero-cta">
@@ -82,24 +83,32 @@ export default async function LandingPage() {
             </div>
 
             <div className="hero-meta">
-              <div><strong>02</strong><span>makers</span></div>
+              <div><strong>01</strong><span>maker · Kathlyn</span></div>
               <div className="meta-divider" />
-              <div><strong>118</strong><span>pieces this season</span></div>
+              <div><strong>Cebu</strong><span>made in Yati, Liloan</span></div>
               <div className="meta-divider" />
-              <div><strong>4.9★</strong><span>customer love</span></div>
+              <div><strong>Hand</strong><span>made, never machine</span></div>
             </div>
           </div>
 
           <div className="hero-visual">
             <div className="hero-image-wrap">
-              <Placeholder tone="beige" label="marigold tote — sand" ratio="4 / 5" />
+              <img
+                src="/hero/tote.jpg"
+                alt="Marigold crochet tote in sand"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
               <div className="hero-image-tag">
                 <YarnIcon size={16} />
-                <span>Hand-stitched in Lisbon</span>
+                <span>Hand-stitched in Cebu</span>
               </div>
             </div>
             <div className="hero-image-sub">
-              <Placeholder tone="cocoa" label="crossbody — cocoa" ratio="1 / 1" />
+              <img
+                src="/hero/crossbody.jpg"
+                alt="Cocoa crochet crossbody bag"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
             </div>
           </div>
         </div>
@@ -130,7 +139,16 @@ export default async function LandingPage() {
             {categoryEntries.map((c) => (
               <Link key={c.name} href={`/shop?category=${encodeURIComponent(c.name)}`} className="cat-card">
                 <div className="cat-img">
-                  <Placeholder tone={c.tone} label={c.label} ratio="4 / 5" />
+                  {c.imageUrl ? (
+                    <img
+                      src={c.imageUrl}
+                      alt={c.name}
+                      loading="lazy"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    />
+                  ) : (
+                    <Placeholder tone={c.tone} label={c.label} ratio="4 / 5" />
+                  )}
                   <div className="cat-arrow">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.3">
                       <path d="M5 15 L15 5 M8 5h7v7" strokeLinecap="round" strokeLinejoin="round" />
@@ -168,24 +186,35 @@ export default async function LandingPage() {
         <div className="story-grid">
           <div className="story-images">
             <div className="story-img-a">
-              <Placeholder tone="sage" label="maker at work" ratio="4 / 5" />
+              <img
+                src="/products/cmp2lfw3l001w44yoobakp9q9.jpg"
+                alt="A crochet amigurumi in progress, on the studio table"
+                loading="lazy"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
             </div>
             <div className="story-img-b">
-              <Placeholder tone="cream" label="yarn shelf" ratio="1 / 1" />
+              <img
+                src="/products/cmp2m8pvs002p44yoqshkkquz.jpg"
+                alt="A small sunflower bookmark, finished and ready to wrap"
+                loading="lazy"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
             </div>
           </div>
           <div className="story-copy">
             <span className="kicker">Our story</span>
-            <h2 className="section-title">A studio of <em>two hands,</em><br /> one slow rhythm.</h2>
+            <h2 className="section-title">A studio of <em>one pair</em><br /> of hands, one slow rhythm.</h2>
             <p>
-              Jaroché began on a kitchen table in 2019 — a sister, a hook, and a basket of leftover
-              cotton. Today we still work in pairs, in a sunlit room above a bakery in Alfama,
-              making each piece to order over a few quiet days.
+              Jaroché began on a quiet afternoon in Yati, Liloan — a single hook, a basket of yarn,
+              and a few hours of stitching that turned into something more. Kathlyn Jarocan still
+              works alone in the same sunlit room, making each piece to order over a few unhurried
+              days.
             </p>
             <p>
-              We choose plant-dyed yarns from a mill in Porto, design our own patterns, and send
-              everything wrapped in unbleached linen. No drops, no algorithms — just objects made
-              to soften with use.
+              We choose soft cottons, linens and raffia, draw our own patterns, and wrap every piece
+              in unbleached linen with a hand-written note. No drops, no algorithms — just slow,
+              careful work made to soften with the years.
             </p>
             <Link href="/about" className="link-arrow" style={{ marginTop: '1.6rem' }}>
               Read the long version <span>→</span>

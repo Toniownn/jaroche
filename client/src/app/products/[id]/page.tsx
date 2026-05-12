@@ -3,6 +3,7 @@ import type { Product } from '@jaroche/shared';
 import { formatPHP } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { AddToCartButton } from '@/components/product/AddToCartButton';
+import { BuyNowButton } from '@/components/product/BuyNowButton';
 import { Placeholder } from '@/components/common/Placeholder';
 
 const API = process.env.API_TARGET ?? 'http://localhost:4000';
@@ -28,12 +29,21 @@ export default async function ProductPage({
 
   return (
     <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10 md:grid-cols-2 md:px-8 md:py-16">
-      <div className="relative overflow-hidden rounded-xl bg-muted">
-        <Placeholder
-          label={product.label ?? product.name.toLowerCase()}
-          tone={product.tone ?? 'beige'}
-          ratio="4 / 5"
-        />
+      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-muted">
+        {product.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={product.imageUrl}
+            alt={product.name}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <Placeholder
+            label={product.label ?? product.name.toLowerCase()}
+            tone={product.tone ?? 'beige'}
+            ratio="4 / 5"
+          />
+        )}
       </div>
 
       <div className="flex flex-col">
@@ -55,8 +65,9 @@ export default async function ProductPage({
           )}
         </div>
 
-        <div className="mt-8 max-w-xs">
+        <div className="mt-8 flex max-w-xs flex-col gap-3">
           <AddToCartButton product={product} />
+          <BuyNowButton product={product} />
         </div>
       </div>
     </div>

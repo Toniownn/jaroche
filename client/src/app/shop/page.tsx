@@ -23,7 +23,7 @@ export default async function ShopPage() {
       <PageHero
         kicker="Spring 2026"
         title={<>The <em>full</em> collection.</>}
-        sub="118 pieces in small batches. Made to order in 7–14 days, shipped in unbleached linen."
+        sub="Handmade in small batches by Kathlyn Jarocan in Yati, Liloan, Cebu. Made to order in 7–14 days."
       />
 
       <Suspense fallback={<div className="shop-grid"><p className="kicker">Loading…</p></div>}>

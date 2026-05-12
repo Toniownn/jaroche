@@ -37,11 +37,21 @@ export function JarocheProductCard({ product, tag }: { product: Product; tag?: s
     <article className="prod-card">
       <Link href={`/products/${product.id}`} className="block">
         <div className="prod-img">
-          <Placeholder
-            label={product.label ?? product.name.toLowerCase()}
-            tone={product.tone ?? 'beige'}
-            ratio="4 / 5"
-          />
+          {product.imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              loading="lazy"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', aspectRatio: '4 / 5' }}
+            />
+          ) : (
+            <Placeholder
+              label={product.label ?? product.name.toLowerCase()}
+              tone={product.tone ?? 'beige'}
+              ratio="4 / 5"
+            />
+          )}
           {displayTag && <span className="prod-tag">{displayTag}</span>}
           {outOfStock && (
             <span className="prod-tag" style={{ background: '#8A2929', top: '2.4rem' }}>
