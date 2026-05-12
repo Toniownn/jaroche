@@ -1,17 +1,17 @@
 import { Placeholder } from '@/components/common/Placeholder';
 
 const VALUES = [
-  { n: '01', t: 'Slow & small', p: 'Every piece is made to order in 7–14 days. We never make more than we can finish by hand.' },
-  { n: '02', t: 'Natural fibers', p: 'Plant-dyed organic cotton, Portuguese linen, raffia from Madagascar — all traceable, all biodegradable.' },
-  { n: '03', t: 'Made to last', p: 'Heirloom-grade stitching, reinforced corners, a free repair service for life. Soften, don’t replace.' },
+  { n: '01', t: 'Slow & small', p: 'Every piece is made to order in 7–14 days. Nothing is made beyond what one pair of hands can finish.' },
+  { n: '02', t: 'Natural fibers', p: 'Soft cotton, linen, raffia and merino wool — chosen for how they feel after years of use, not just the first wear.' },
+  { n: '03', t: 'Made to last', p: 'Heirloom-grade stitching, reinforced corners, free repairs for life. Soften, don’t replace.' },
 ];
 
 const TIMELINE = [
-  { y: '2019', t: 'A kitchen table', p: 'Maria and Joana — sisters, both newly out of design school — start crocheting on a rainy Sunday in Alfama.' },
-  { y: '2020', t: 'First small market', p: 'We sell out our first batch of 12 totes at a craft fair in LX Factory. The bakery downstairs lets us use their basement for shipping.' },
-  { y: '2022', t: 'The atelier', p: 'We move into a sunlit room above the bakery. Sandra joins as our third pair of hands. We hand-write 600 thank-you notes that year.' },
-  { y: '2024', t: 'Our own yarn', p: 'Plant-dyed in collaboration with Têxtil Marina, a fourth-generation mill in Porto. Six house colors, all named after the women in our family.' },
-  { y: '2026', t: 'Today', p: 'Three makers, 118 pieces a season, shipping to 31 countries. Still on the same kitchen table for design days.' },
+  { y: '2020', t: 'A hook and a window', p: 'Kathlyn Jarocan picks up a crochet hook in Yati, Liloan, Cebu — a quiet way to keep busy through a long, rainy season.' },
+  { y: '2021', t: 'First small market', p: 'A few bouquets, a few totes, a small stall at a barangay weekend market. The first set of regulars find us.' },
+  { y: '2023', t: 'The studio at home', p: 'A sunlit room becomes the studio — yarn baskets along the wall, an old table for cutting, a board for finished pieces.' },
+  { y: '2025', t: 'Online & by appointment', p: 'Jaroché goes online — and the studio stays open by appointment for friends, neighbours, and curious passersby.' },
+  { y: '2026', t: 'Today', p: 'One maker, small batches, each piece signed and shipped from Yati. Still the same table, still the same pace.' },
 ];
 
 export default function AboutPage() {
@@ -20,10 +20,10 @@ export default function AboutPage() {
       <section className="page-hero">
         <div className="page-hero-inner">
           <span className="kicker">Our story</span>
-          <h1 className="page-hero-title">A studio of <em>two hands,</em> one slow rhythm.</h1>
+          <h1 className="page-hero-title">A studio of <em>one pair</em> of hands.</h1>
           <p className="page-hero-sub">
-            Jaroché is a tiny atelier above a bakery in Alfama, Lisboa. We design and crochet
-            every piece ourselves, in small considered batches, the way our grandmothers did.
+            Jaroché is a small arts &amp; crafts studio in Yati, Liloan, Cebu, run by Kathlyn Jarocan.
+            Every piece is designed and crocheted by hand, in small considered batches.
           </p>
         </div>
       </section>
@@ -31,29 +31,38 @@ export default function AboutPage() {
       <section className="about-intro">
         <div>
           <p className="lead">
-            &ldquo;We started Jaroché on a kitchen table in 2019 — a sister, a hook, and a basket of
-            leftover cotton from our grandmother&apos;s chest.&rdquo;
+            &ldquo;I started Jaroché at home in Yati — a hook, a basket of yarn, and the slow
+            rhythm of one stitch after another.&rdquo;
           </p>
           <p>
-            What began as a way to keep our hands busy through a long winter became, slowly and
-            almost accidentally, a small business. Our first tote went to a friend. The second to
-            her sister. The third to a stranger in Berlin who&apos;d seen the second on the metro.
+            What began as a way to keep my hands busy became, slowly and almost accidentally,
+            a small business. The first bouquet went to a friend. The second to her sister.
+            The third to a stranger who&apos;d seen the second on Facebook.
           </p>
           <p>
-            Six years on, we still work in pairs in the same sunlit room. We choose plant-dyed yarns
-            from a family mill in Porto, design our own patterns at the kitchen table, and send
-            everything wrapped in unbleached linen and a hand-written note.
+            Today I still work alone in the same sunlit room — choosing soft cottons and linens,
+            designing my own patterns, and sending everything wrapped with care and a hand-written note.
           </p>
           <p>
-            We don&apos;t do drops, algorithms, or seasonal anxiety. Just objects made to soften with use.
+            No drops, no algorithms, no seasonal anxiety. Just objects made by hand, to soften with use.
           </p>
         </div>
         <div className="about-image-stack">
           <div>
-            <Placeholder label="studio window light" tone="cream" ratio="3 / 4" />
+            <img
+              src="/products/cmp2l38ns001p44yo54i8duem.jpg"
+              alt="A single-stem tulip and carnation pair from the studio"
+              loading="lazy"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
           </div>
           <div>
-            <Placeholder label="hands at work" tone="beige" ratio="3 / 4" />
+            <img
+              src="/products/cmp2l38nm001o44yo5tnnemz3.jpg"
+              alt="A carnation cluster bouquet, hand-finished"
+              loading="lazy"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
           </div>
         </div>
       </section>

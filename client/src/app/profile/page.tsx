@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import type { Order, OrderStatus, PublicUser } from '@jaroche/shared';
+import type { Order, OrderStatus, Product, PublicUser } from '@jaroche/shared';
 import { useAuthStore } from '@/stores/auth.store';
 import { useCartStore } from '@/stores/cart.store';
 import { api } from '@/lib/api';
@@ -30,17 +30,6 @@ const STATUS_LABEL: Record<OrderStatus, string> = {
 
 type TabId = 'orders' | 'wishlist' | 'addresses' | 'details' | 'rewards';
 
-const WISHLIST = [
-  { name: 'Soft Wave Throw', price: 10080, tone: 'sage', label: 'throw 130×170' },
-  { name: 'Daphne Shoulder Bag', price: 6720, tone: 'beige', label: 'shoulder bag' },
-  { name: 'Linen Table Runner', price: 3480, tone: 'sage', label: 'table runner' },
-  { name: 'Olive Throw Cushion', price: 5760, tone: 'blush', label: 'cushion 40×40' },
-  { name: 'Lila Bucket Hat', price: 2520, tone: 'cream', label: 'bucket hat' },
-  { name: 'Petite Crossbody', price: 3840, tone: 'cocoa', label: 'crossbody' },
-  { name: 'Ribbon Scrunchie Set', price: 1080, tone: 'blush', label: 'scrunchie set' },
-  { name: 'Mini Coin Pouch', price: 1680, tone: 'cocoa', label: 'coin pouch' },
-];
-
 export default function ProfilePage() {
   const router = useRouter();
   const isHydrated = useAuthStore((s) => s.isHydrated);
@@ -49,6 +38,7 @@ export default function ProfilePage() {
   const clearCart = useCartStore((s) => s.clear);
   const [orders, setOrders] = useState<Order[] | null>(null);
   const [profile, setProfile] = useState<PublicUser | null>(null);
+  const [wishlist, setWishlist] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [tab, setTab] = useState<TabId>('orders');
 
@@ -74,6 +64,11 @@ export default function ProfilePage() {
         setFirst(parts[0] ?? '');
         setLast(parts.slice(1).join(' '));
         setEmail(r.data.email);
+      }),
+      api.get<Product[]>('/products').then((r) => {
+        const tagged = r.data.filter((p) => p.tag === 'Best seller');
+        const others = r.data.filter((p) => p.tag !== 'Best seller');
+        setWishlist([...tagged, ...others].slice(0, 8));
       }),
     ]).catch(() => setError('Could not load your account. Try again in a moment.'));
   }, [isHydrated, user, router]);
@@ -122,7 +117,7 @@ export default function ProfilePage() {
 
   const TABS: Array<{ id: TabId; label: string; count?: number }> = [
     { id: 'orders', label: 'Orders', count: orderCount },
-    { id: 'wishlist', label: 'Wishlist', count: 8 },
+    { id: 'wishlist', label: 'Wishlist', count: wishlist.length },
     { id: 'addresses', label: 'Addresses' },
     { id: 'details', label: 'Account details' },
     { id: 'rewards', label: 'Studio rewards' },
@@ -165,6 +160,12 @@ export default function ProfilePage() {
                 paddingTop: '0.6rem',
               }}
             >
+              {user.role === 'ADMIN' && (
+                <Link href="/admin" className="profile-tab">
+                  <span>Admin dashboard</span>
+                  <span className="count">↗</span>
+                </Link>
+              )}
               <button type="button" className="profile-tab" onClick={signOut}>
                 <span>Sign out</span>
               </button>
@@ -213,11 +214,20 @@ export default function ProfilePage() {
                       <div className="order-items">
                         {o.items.map((item) => (
                           <div key={item.id} className="order-thumb">
-                            <Placeholder
-                              label={item.product?.label ?? item.product?.name?.toLowerCase() ?? 'piece'}
-                              tone={item.product?.tone ?? 'beige'}
-                              ratio="1 / 1"
-                            />
+                            {item.product?.imageUrl ? (
+                              <img
+                                src={item.product.imageUrl}
+                                alt={item.product?.name ?? 'piece'}
+                                loading="lazy"
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', aspectRatio: '1 / 1' }}
+                              />
+                            ) : (
+                              <Placeholder
+                                label={item.product?.label ?? item.product?.name?.toLowerCase() ?? 'piece'}
+                                tone={item.product?.tone ?? 'beige'}
+                                ratio="1 / 1"
+                              />
+                            )}
                           </div>
                         ))}
                       </div>
@@ -269,12 +279,25 @@ export default function ProfilePage() {
           {tab === 'wishlist' && (
             <>
               <h2>Saved <em>for later.</em></h2>
-              <p>Eight pieces you&apos;ve fallen for. We&apos;ll let you know when any go on quiet sale.</p>
+              <p>
+                {wishlist.length === 0
+                  ? "Loading the pieces you've saved…"
+                  : `${wishlist.length} ${wishlist.length === 1 ? 'piece' : 'pieces'} you've fallen for. We'll let you know when any go on quiet sale.`}
+              </p>
               <div className="wishlist-grid" style={{ marginTop: '1.5rem' }}>
-                {WISHLIST.map((p) => (
-                  <article key={p.name} className="prod-card">
+                {wishlist.map((p) => (
+                  <article key={p.id} className="prod-card">
                     <div className="prod-img">
-                      <Placeholder label={p.label} tone={p.tone} ratio="4 / 5" />
+                      {p.imageUrl ? (
+                        <img
+                          src={p.imageUrl}
+                          alt={p.name}
+                          loading="lazy"
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', aspectRatio: '4 / 5' }}
+                        />
+                      ) : (
+                        <Placeholder label={p.label ?? p.name.toLowerCase()} tone={(p.tone as 'beige' | 'cream' | 'cocoa' | 'blush' | 'sage' | undefined) ?? 'beige'} ratio="4 / 5" />
+                      )}
                       <button
                         type="button"
                         className="prod-add"
@@ -291,7 +314,7 @@ export default function ProfilePage() {
                       <div>
                         <h3>{p.name}</h3>
                       </div>
-                      <span className="prod-price">{formatPHP(p.price)}</span>
+                      <span className="prod-price">{formatPHP(Number(p.price))}</span>
                     </div>
                     <button
                       type="button"
@@ -320,9 +343,10 @@ export default function ProfilePage() {
                   <h4>Home</h4>
                   <p>
                     {display.name}
-                    <br />14 rue de Belleville, Apt 3B
-                    <br />75020 Paris, France
-                    <br />+33 6 12 34 56 78
+                    <br />Sitio Pulang Lupa, Yati
+                    <br />Liloan, Cebu 6002
+                    <br />Philippines
+                    <br />+63 917 000 0000
                   </p>
                   <button
                     type="button"
@@ -340,9 +364,10 @@ export default function ProfilePage() {
                 <div className="address-card">
                   <h4>Mum&apos;s house</h4>
                   <p>
-                    Sophie Moreau
-                    <br />22 chemin du Lavoir
-                    <br />13100 Aix-en-Provence, France
+                    Rosa Jarocan
+                    <br />Lot 12, Sampaguita Street
+                    <br />Mandaue City, Cebu 6014
+                    <br />Philippines
                   </p>
                   <button
                     type="button"

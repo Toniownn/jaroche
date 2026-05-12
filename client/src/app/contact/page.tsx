@@ -20,8 +20,8 @@ export default function ContactPage() {
           <span className="kicker">Say hello</span>
           <h1 className="page-hero-title">Drop us <em>a line.</em></h1>
           <p className="page-hero-sub">
-            We answer every email by hand, usually within two studio days. For urgent things,
-            the studio phone is on Tue–Fri, 10am–4pm Lisbon time.
+            I answer every message by hand, usually within two studio days. For urgent things,
+            send a message on Facebook or Instagram — Tue–Sat, 9am–5pm Philippine time.
           </p>
         </div>
       </section>
@@ -30,26 +30,24 @@ export default function ContactPage() {
         <div className="contact-info">
           <div className="info-block">
             <h3>The studio</h3>
-            <p>Rua das Flores 12, 1.º Esq.<br />1200-194 Lisboa, Portugal</p>
-            <p className="small">By appointment only — drop us a note and we&apos;ll put the kettle on.</p>
+            <p>Yati, Liloan<br />Cebu, Philippines</p>
+            <p className="small">By appointment only — send a message first and we&apos;ll set a time.</p>
           </div>
           <div className="info-block">
-            <h3>Email</h3>
-            <p>hello@jaroche.studio</p>
-            <p className="small">For wholesale enquiries: wholesale@jaroche.studio</p>
+            <h3>Message</h3>
+            <p>Facebook: Jaroché</p>
+            <p className="small">Instagram: @jaroche_</p>
           </div>
           <div className="info-block">
-            <h3>Phone</h3>
-            <p>+351 21 123 4567</p>
-            <p className="small">Tue–Fri, 10am–4pm WET. Maria or Joana picks up.</p>
+            <h3>Hours</h3>
+            <p>Tue–Sat, 9am–5pm</p>
+            <p className="small">Philippine time (PHT). Kathlyn answers personally.</p>
           </div>
           <div className="info-block">
             <h3>Find us elsewhere</h3>
             <div className="socials" style={{ marginTop: '0.6rem' }}>
-              <a href="#">Instagram</a>
-              <a href="#">Pinterest</a>
-              <a href="#">TikTok</a>
-              <a href="#">Substack</a>
+              <a href="https://www.facebook.com/jaroche" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="https://www.instagram.com/jaroche_" target="_blank" rel="noopener noreferrer">Instagram</a>
             </div>
           </div>
         </div>

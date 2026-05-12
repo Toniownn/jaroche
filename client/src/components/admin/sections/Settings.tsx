@@ -131,14 +131,14 @@ export function Settings() {
                 </div>
                 <div className="ad-field">
                   <label>Contact email</label>
-                  <input defaultValue="hello@jaroche.studio" />
+                  <input defaultValue="jaroche@jaroche.ph" />
                 </div>
               </div>
               <div className="ad-field">
                 <label>Studio address</label>
                 <textarea
                   rows={3}
-                  defaultValue={'Rua das Flores 12, 1.º Esq.\n1200-194 Lisboa, Portugal'}
+                  defaultValue={'Yati, Liloan\nCebu, Philippines'}
                 />
               </div>
               <div className="row" style={{ marginTop: '1rem' }}>

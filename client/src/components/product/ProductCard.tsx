@@ -14,11 +14,21 @@ export function ProductCard({ product }: { product: Product }) {
       className="group flex flex-col gap-3 rounded-xl border border-border bg-card p-4 transition hover:border-foreground/30"
     >
       <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-muted">
-        <Placeholder
-          label={product.label ?? product.name.toLowerCase()}
-          tone={product.tone ?? 'beige'}
-          ratio="4 / 5"
-        />
+        {product.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={product.imageUrl}
+            alt={product.name}
+            className="h-full w-full object-cover transition group-hover:scale-[1.02]"
+            loading="lazy"
+          />
+        ) : (
+          <Placeholder
+            label={product.label ?? product.name.toLowerCase()}
+            tone={product.tone ?? 'beige'}
+            ratio="4 / 5"
+          />
+        )}
         {outOfStock && (
           <div className="absolute inset-0 grid place-items-center bg-background/70">
             <Badge variant="warning">Out of stock</Badge>

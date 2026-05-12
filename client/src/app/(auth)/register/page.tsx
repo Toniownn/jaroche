@@ -14,7 +14,7 @@ export default function RegisterPage() {
           <p className="auth-side-quote">
             Made slowly, one stitch at a time. We hope your pieces soften with the years and
             outlast every season.
-            <span className="auth-side-attr">— Maria &amp; Joana, founders</span>
+            <span className="auth-side-attr">— Kathlyn Jarocan, founder</span>
           </p>
         </div>
 

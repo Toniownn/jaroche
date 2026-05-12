@@ -9,18 +9,21 @@ interface Post {
   read: string;
   img: string;
   tone: Tone;
+  imageUrl?: string;
   body?: string;
 }
 
 const POSTS: Post[] = [
-  { t: 'How we plant-dye our spring palette', c: 'Process', d: 'March 14, 2026', read: '6 min', img: 'yarn drying outside', tone: 'beige', body: 'Six colors, six plants, one mill in Porto. A walk-through of how marigold becomes Marigold.' },
-  { t: 'On finishing — why corners matter most', c: 'Craft', d: 'Feb 28, 2026', read: '4 min', img: 'stitched corner detail', tone: 'cocoa' },
-  { t: 'Maria\u2019s grandmother\u2019s stitch journal', c: 'Archive', d: 'Feb 11, 2026', read: '8 min', img: 'old stitch journal', tone: 'cream' },
-  { t: 'A weekend in our Alfama studio', c: 'Studio', d: 'Jan 30, 2026', read: '5 min', img: 'studio panorama', tone: 'blush' },
-  { t: 'How to wash and care for crochet', c: 'Care', d: 'Jan 16, 2026', read: '3 min', img: 'linen soak', tone: 'sage' },
-  { t: 'Slow business, six years in', c: 'Letters', d: 'Jan 04, 2026', read: '7 min', img: 'Joana writing', tone: 'beige' },
-  { t: 'The case for one good tote', c: 'Manifesto', d: 'Dec 12, 2025', read: '4 min', img: 'tote on chair', tone: 'cream' },
+  { t: 'A walk through the studio in Yati', c: 'Studio', d: 'March 14, 2026', read: '6 min', img: 'yarn baskets along the wall', tone: 'beige', imageUrl: '/products/cmp2l38ns001p44yo54i8duem.jpg', body: 'Yarn, hooks, sunlight and the rhythm of a quiet afternoon in Liloan, Cebu — a tour of where every Jaroché piece begins.' },
+  { t: 'On finishing — why corners matter most', c: 'Craft', d: 'Feb 28, 2026', read: '4 min', img: 'stitched corner detail', tone: 'cocoa', imageUrl: '/products/cmp2lvh3l002744yo6imsvyay.jpg' },
+  { t: 'The stitch journal I keep', c: 'Archive', d: 'Feb 11, 2026', read: '8 min', img: 'old stitch journal', tone: 'cream', imageUrl: '/products/cmp2lfw3l001w44yoobakp9q9.jpg' },
+  { t: 'A weekend in our Yati studio', c: 'Studio', d: 'Jan 30, 2026', read: '5 min', img: 'studio panorama', tone: 'blush', imageUrl: '/products/cmp2l38nm001o44yo5tnnemz3.jpg' },
+  { t: 'How to wash and care for crochet', c: 'Care', d: 'Jan 16, 2026', read: '3 min', img: 'linen soak', tone: 'sage', imageUrl: '/products/cmp2m8pwi002y44yo8ffpwl72.jpg' },
+  { t: 'Slow business, the long way', c: 'Letters', d: 'Jan 04, 2026', read: '7 min', img: 'journal page', tone: 'beige', imageUrl: '/products/cmp2mmm68003e44yoduys6tg6.jpg' },
+  { t: 'The case for one good piece', c: 'Manifesto', d: 'Dec 12, 2025', read: '4 min', img: 'tote on chair', tone: 'cream', imageUrl: '/products/cmp2lvh3o002844yowwj52zyl.jpg' },
 ];
+
+const imgStyle = { width: '100%', height: '100%', objectFit: 'cover', display: 'block' } as const;
 
 export default function JournalPage() {
   const [feature, ...rest] = POSTS;
@@ -31,7 +34,7 @@ export default function JournalPage() {
           <span className="kicker">The Journal</span>
           <h1 className="page-hero-title">Letters from <em>the studio.</em></h1>
           <p className="page-hero-sub">
-            Notes on craft, slow business, the women who taught us, and the long quiet days at the hook.
+            Notes on craft, slow business, and the long quiet days at the hook in Yati, Liloan, Cebu.
           </p>
         </div>
       </section>
@@ -44,7 +47,11 @@ export default function JournalPage() {
 
       <article className="journal-feature">
         <div className="feat-img">
-          <Placeholder label={feature.img} tone={feature.tone} ratio="4 / 3" />
+          {feature.imageUrl ? (
+            <img src={feature.imageUrl} alt={feature.t} style={imgStyle} />
+          ) : (
+            <Placeholder label={feature.img} tone={feature.tone} ratio="4 / 3" />
+          )}
         </div>
         <div>
           <span className="kicker">Featured · {feature.c}</span>
@@ -54,7 +61,7 @@ export default function JournalPage() {
             <span className="dot" />
             <span>{feature.read} read</span>
             <span className="dot" />
-            <span>by Maria</span>
+            <span>by Kathlyn Jarocan</span>
           </div>
           {feature.body && <p style={{ marginTop: '1.2rem' }}>{feature.body}</p>}
           <a href="#" className="link-arrow" style={{ marginTop: '1.2rem', display: 'inline-flex' }}>
@@ -72,7 +79,11 @@ export default function JournalPage() {
           {rest.map((p) => (
             <article key={p.t} className="journal-card">
               <div className="card-img">
-                <Placeholder label={p.img} tone={p.tone} ratio="4 / 3" />
+                {p.imageUrl ? (
+                  <img src={p.imageUrl} alt={p.t} loading="lazy" style={imgStyle} />
+                ) : (
+                  <Placeholder label={p.img} tone={p.tone} ratio="4 / 3" />
+                )}
               </div>
               <div className="journal-meta">
                 <span>{p.c}</span>

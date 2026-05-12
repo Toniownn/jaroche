@@ -4,10 +4,10 @@ import { KpiCard } from '../KpiCard';
 import { useAdminModal } from '../Modal';
 
 const REVIEWS = [
-  { n: 'Élise M.', p: 'Marigold Tote', r: 5, t: 'The colour is exactly as photographed and the strap is exactly the right length. So happy.', when: 'May 4', replied: false },
-  { n: 'Léa R.', p: 'Soft Wave Throw', r: 5, t: 'Sleeping under it now — feels like it was knit by hand by someone who cared. Because it was.', when: 'May 2', replied: true },
-  { n: 'Hana K.', p: 'Petite Crossbody', r: 4, t: 'Beautiful piece, slightly smaller than expected. I&apos;ll get the bigger one next.', when: 'Apr 28', replied: false },
-  { n: 'Tomás A.', p: 'Lila Bucket Hat', r: 5, t: 'Wore it every day in Lisbon last week. Only got two compliments though, will demand more.', when: 'Apr 24', replied: true },
+  { n: 'Mae L.', p: 'Carnation Cluster Bouquet', r: 5, t: 'The colours are exactly as photographed and it arrived beautifully wrapped. So happy.', when: 'May 4', replied: false },
+  { n: 'Anna R.', p: 'Sunflower & Daisy Posy', r: 5, t: 'A gift for my mom — she cried. Every stitch felt thought through.', when: 'May 2', replied: true },
+  { n: 'Hana K.', p: 'Pink Tulip Single Keychain', r: 4, t: 'Beautiful piece, slightly smaller than expected. Getting a few more for friends.', when: 'Apr 28', replied: false },
+  { n: 'Tomás A.', p: 'Navy-Trim Bucket Hat', r: 5, t: 'Wore it every day in Cebu last week. Only got two compliments though, will demand more.', when: 'Apr 24', replied: true },
 ];
 
 export function Reviews() {
