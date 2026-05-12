@@ -4,12 +4,12 @@ import { Icon } from '../Icon';
 import { useAdminModal } from '../Modal';
 
 const POSTS = [
-  { t: 'How we plant-dye our cotton in Porto', cat: 'Materials', a: 'Joana', s: 'Published', d: 'May 2', v: 2840, tone: 'sage' },
-  { t: 'A morning at the studio: making a Marigold tote', cat: 'Process', a: 'Maria', s: 'Published', d: 'Apr 28', v: 4120, tone: 'beige' },
-  { t: 'Spring · Loosely tied', cat: 'Collections', a: 'Maria', s: 'Published', d: 'Apr 14', v: 3210, tone: 'blush' },
-  { t: 'The mill that taught us patience', cat: 'Stories', a: 'Joana', s: 'Draft', d: '—', v: 0, tone: 'cocoa' },
-  { t: 'Care guide: washing your crocheted pieces', cat: 'Care', a: 'Maria', s: 'Published', d: 'Apr 1', v: 1840, tone: 'cream' },
-  { t: 'Five years on a kitchen table', cat: 'Stories', a: 'Joana', s: 'Draft', d: '—', v: 0, tone: 'beige' },
+  { t: 'A walk through the studio in Yati', cat: 'Studio', a: 'Kathlyn', s: 'Published', d: 'May 2', v: 2840, tone: 'sage' },
+  { t: 'How I wrap each bouquet by hand', cat: 'Process', a: 'Kathlyn', s: 'Published', d: 'Apr 28', v: 4120, tone: 'beige' },
+  { t: 'Spring · Loosely tied', cat: 'Collections', a: 'Kathlyn', s: 'Published', d: 'Apr 14', v: 3210, tone: 'blush' },
+  { t: 'A quiet morning with the hook', cat: 'Stories', a: 'Kathlyn', s: 'Draft', d: '—', v: 0, tone: 'cocoa' },
+  { t: 'Care guide: washing your crocheted pieces', cat: 'Care', a: 'Kathlyn', s: 'Published', d: 'Apr 1', v: 1840, tone: 'cream' },
+  { t: 'How Jaroché began at home', cat: 'Stories', a: 'Kathlyn', s: 'Draft', d: '—', v: 0, tone: 'beige' },
 ];
 
 export function Journal() {

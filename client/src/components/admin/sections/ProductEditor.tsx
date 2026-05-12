@@ -24,7 +24,7 @@ interface FormState {
 
 const TONES = ['beige', 'cream', 'blush', 'cocoa', 'sage'];
 const MATERIALS = ['Organic cotton', 'Linen', 'Raffia', 'Merino wool'];
-const MAKERS = ['Maria', 'Joana', 'Both makers'];
+const MAKERS = ['Kathlyn Jarocan'];
 const TAGS = ['', 'Best seller', 'New', 'Limited'];
 
 const empty: FormState = {
@@ -36,7 +36,7 @@ const empty: FormState = {
   category: '',
   tone: 'beige',
   material: 'Organic cotton',
-  madeBy: 'Maria',
+  madeBy: 'Kathlyn Jarocan',
   label: '',
   tag: '',
 };
@@ -69,7 +69,7 @@ export function ProductEditor({ id }: Props) {
           category: p.category,
           tone: p.tone ?? 'beige',
           material: p.material ?? 'Organic cotton',
-          madeBy: p.madeBy ?? 'Maria',
+          madeBy: p.madeBy ?? 'Kathlyn Jarocan',
           label: p.label ?? '',
           tag: p.tag ?? '',
         });
@@ -235,7 +235,7 @@ export function ProductEditor({ id }: Props) {
                   type="text"
                   value={form.label}
                   onChange={(e) => update('label', e.target.value)}
-                  placeholder="Hand-finished · Lisbon"
+                  placeholder="Hand-finished · Cebu"
                 />
               </div>
             </div>
