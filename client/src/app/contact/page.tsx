@@ -46,7 +46,7 @@ export default function ContactPage() {
           <div className="info-block">
             <h3>Find us elsewhere</h3>
             <div className="socials" style={{ marginTop: '0.6rem' }}>
-              <a href="https://www.facebook.com/jaroche" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="https://www.facebook.com/Jarochebykat" target="_blank" rel="noopener noreferrer">Facebook</a>
               <a href="https://www.instagram.com/jaroche_" target="_blank" rel="noopener noreferrer">Instagram</a>
             </div>
           </div>

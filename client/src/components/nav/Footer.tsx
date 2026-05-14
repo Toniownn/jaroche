@@ -10,7 +10,7 @@ export function Footer() {
           <Image src="/logo.png" alt="Jaroché" width={56} height={56} className="footer-logo h-14 w-auto" />
           <p>Arts &amp; Crafts Store — handmade crochet from Yati, Liloan, Cebu.</p>
           <div className="socials">
-            <a href="https://www.facebook.com/jaroche" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <a href="https://www.facebook.com/Jarochebykat" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               Facebook
             </a>
             <a href="https://www.instagram.com/jaroche_" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
