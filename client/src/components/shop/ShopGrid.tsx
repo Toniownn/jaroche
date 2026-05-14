@@ -26,7 +26,6 @@ const SWATCHES: Array<{ tone: string; hex: string; title: string }> = [
   { tone: 'cream', hex: '#FDF6F0', title: 'Cream' },
 ];
 
-const MATERIALS = ['Organic cotton', 'Linen', 'Raffia', 'Merino wool'] as const;
 const MAKERS = ['Kathlyn Jarocan'] as const;
 
 const PRICE_MIN_DEFAULT = 0;
@@ -54,7 +53,6 @@ export function ShopGrid({ products }: { products: Product[] }) {
   const [active, setActive] = useState<string>(initialCat);
   const [sort, setSort] = useState<SortKey>('featured');
   const [tones, setTones] = useState<Set<string>>(new Set());
-  const [materials, setMaterials] = useState<Set<string>>(new Set());
   const [makers, setMakers] = useState<Set<string>>(new Set());
   const [priceMinRaw, setPriceMinRaw] = useState<string>(`₱${PRICE_MIN_DEFAULT.toLocaleString()}`);
   const [priceMaxRaw, setPriceMaxRaw] = useState<string>(`₱${PRICE_MAX_DEFAULT.toLocaleString()}`);
@@ -72,7 +70,6 @@ export function ShopGrid({ products }: { products: Product[] }) {
     let list = products.filter((p) => {
       if (active !== 'All' && p.category !== active) return false;
       if (tones.size > 0 && (!p.tone || !tones.has(p.tone))) return false;
-      if (materials.size > 0 && (!p.material || !materials.has(p.material))) return false;
       if (makers.size > 0 && (!p.madeBy || !makers.has(p.madeBy))) return false;
       const price = Number(p.price);
       if (price < lo || price > hi) return false;
@@ -86,7 +83,7 @@ export function ShopGrid({ products }: { products: Product[] }) {
         (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       );
     return list;
-  }, [products, active, sort, tones, materials, makers, priceMinRaw, priceMaxRaw]);
+  }, [products, active, sort, tones, makers, priceMinRaw, priceMaxRaw]);
 
   function selectCategory(cat: string) {
     setActive(cat);
@@ -99,7 +96,6 @@ export function ShopGrid({ products }: { products: Product[] }) {
 
   function clearFilters() {
     setTones(new Set());
-    setMaterials(new Set());
     setMakers(new Set());
     setPriceMinRaw(`₱${PRICE_MIN_DEFAULT.toLocaleString()}`);
     setPriceMaxRaw(`₱${PRICE_MAX_DEFAULT.toLocaleString()}`);
@@ -107,7 +103,6 @@ export function ShopGrid({ products }: { products: Product[] }) {
 
   const anyFilterActive =
     tones.size > 0 ||
-    materials.size > 0 ||
     makers.size > 0 ||
     parsePrice(priceMinRaw, PRICE_MIN_DEFAULT) !== PRICE_MIN_DEFAULT ||
     parsePrice(priceMaxRaw, PRICE_MAX_DEFAULT) !== PRICE_MAX_DEFAULT;
@@ -156,23 +151,7 @@ export function ShopGrid({ products }: { products: Product[] }) {
             ))}
           </div>
 
-          <h4 style={{ marginTop: '2rem' }}>Material</h4>
-          <ul>
-            {MATERIALS.map((m) => (
-              <li key={m}>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={materials.has(m)}
-                    onChange={() => setMaterials((s) => toggleInSet(s, m))}
-                  />{' '}
-                  {m}
-                </label>
-              </li>
-            ))}
-          </ul>
-
-          <h4>Price</h4>
+          <h4 style={{ marginTop: '2rem' }}>Price</h4>
           <div className="price-range">
             <input
               value={priceMinRaw}
