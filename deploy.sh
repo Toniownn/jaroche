@@ -103,6 +103,16 @@ else
   warn ".env already exists — leaving in place"
 fi
 
+# pm2 starts the Next client with `--cwd client`, so it can't see the repo-root .env.
+# Next.js loads client/.env.production at build + runtime — API_TARGET must live here
+# for server-component fetches to reach the Express API.
+say "Writing client/.env.production"
+cat > client/.env.production <<ENV
+API_TARGET=http://127.0.0.1:${SERVER_PORT}
+NEXT_PUBLIC_API_BASE=/api
+ENV
+chmod 600 client/.env.production
+
 # ---------------------------------------------------------------- next.config rewrite
 say "Pointing Next /api rewrite at 127.0.0.1:${SERVER_PORT}"
 if [ -f client/next.config.ts ] && grep -qE "(localhost|127\.0\.0\.1):[0-9]+" client/next.config.ts; then
