@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { RegisterForm } from '@/components/forms/RegisterForm';
 import { YarnIcon } from '@/components/icons/YarnIcon';
 
@@ -6,8 +7,8 @@ export default function RegisterPage() {
   return (
     <div className="auth-wrap">
       <aside className="auth-side">
-        <Link href="/" className="auth-side-logo">
-          Jaroché
+        <Link href="/" className="auth-side-logo" aria-label="Jaroché — home">
+          <Image src="/logo.png" alt="Jaroché" width={64} height={64} priority className="h-16 w-auto" />
         </Link>
 
         <div>

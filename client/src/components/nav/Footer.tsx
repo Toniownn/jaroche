@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { YarnIcon } from '@/components/icons/YarnIcon';
 
 export function Footer() {
@@ -6,7 +7,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="footer-grid">
         <div className="footer-brand">
-          <span className="footer-logo">Jaroché</span>
+          <Image src="/logo.png" alt="Jaroché" width={56} height={56} className="footer-logo h-14 w-auto" />
           <p>Arts &amp; Crafts Store — handmade crochet from Yati, Liloan, Cebu.</p>
           <div className="socials">
             <a href="https://www.facebook.com/jaroche" target="_blank" rel="noopener noreferrer" aria-label="Facebook">

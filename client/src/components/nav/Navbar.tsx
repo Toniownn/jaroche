@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Search, User as UserIcon, ShoppingBag, Menu, X } from 'lucide-react';
 import { useAuthStore } from '@/stores/auth.store';
@@ -70,10 +71,8 @@ export function Navbar() {
           >
             <Menu className="size-[20px]" strokeWidth={1.4} />
           </button>
-          <Link href="/" className="text-cocoa">
-            <span className="font-serif text-[1.6rem] font-medium italic tracking-[-0.01em] leading-none md:text-[1.85rem]">
-              Jaroché
-            </span>
+          <Link href="/" aria-label="Jaroché — home" className="flex items-center text-cocoa">
+            <Image src="/logo.png" alt="Jaroché" width={44} height={44} priority className="h-10 w-auto md:h-11" />
           </Link>
         </div>
 
@@ -182,9 +181,7 @@ function MobileDrawer({ menuOpen, onClose, pathname, showUser }: DrawerProps) {
           style={{ background: 'var(--color-blush)' }}
         >
           <div className="flex items-center justify-between">
-            <span className="font-serif text-[1.6rem] font-medium italic leading-none text-cocoa">
-              Jaroché
-            </span>
+            <Image src="/logo.png" alt="Jaroché" width={40} height={40} className="h-10 w-auto" />
             <button
               type="button"
               onClick={onClose}
